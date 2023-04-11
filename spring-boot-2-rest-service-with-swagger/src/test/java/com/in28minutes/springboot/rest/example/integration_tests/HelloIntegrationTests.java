@@ -18,7 +18,7 @@ public class HelloIntegrationTests {
 
     @Test
     public void testCreateReadDelete(){
-        var helloDto = new Cat("dewi1", "swansea1");
+        var helloDto = new Cat("dewi1", "swansea1", "red");
         catController.create(helloDto);
         catController.getAll();
         //Assertions.assertThat(helloController.getAll()).first().hasFieldOrPropertyWithValue("name", "dewi1");

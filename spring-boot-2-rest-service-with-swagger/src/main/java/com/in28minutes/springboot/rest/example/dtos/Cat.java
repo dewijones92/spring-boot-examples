@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -22,12 +23,26 @@ public class Cat {
     @Size(min = 2, message = "Name should have atleast 2 characters")
     private String location;
 
+    public String getColour() {
+        return colour;
+    }
 
-    public Cat(String name, String location) {
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    @Schema(name = "Colour should have atleast 2 characters")
+    @Size(min = 2, message = "Colour should have atleast 2 characters")
+    @NotNull
+    private String colour;
+
+
+    public Cat(String name, String location, String colour) {
         super();
         this.id = id;
         this.name = name;
         this.location = location;
+        this.colour = colour;
     }
 
     public Cat(){}

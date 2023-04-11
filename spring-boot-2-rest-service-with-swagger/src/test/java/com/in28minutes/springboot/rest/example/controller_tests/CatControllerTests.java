@@ -33,7 +33,7 @@ public class CatControllerTests {
 
     @Test
     public void testfindAll() throws Exception {
-        Cat hello = new Cat("Dewi2", "Swansea");
+        Cat hello = new Cat("Dewi2", "Swansea", "Blue");
         List<Cat> hellos = Arrays.asList(hello);
         Mockito.when(helloService.getHellos()).thenReturn(hellos);
         mockMvc.perform(get("/hello"))

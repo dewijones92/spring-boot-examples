@@ -9,7 +9,7 @@ public class HelloTests {
     public void testCreateReadDelete(){
         var restTempalte = new RestTemplate();
         var url = "http://localhost:9090/hello";
-        var helloDtoRequest = new Cat("Dewi1", "llandeilo1");
+        var helloDtoRequest = new Cat("Dewi1", "llandeilo1", "red");
 
     }
 

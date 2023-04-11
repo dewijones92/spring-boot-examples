@@ -28,7 +28,7 @@ public class HelloServiceTests {
     @Test
     public void testFindAllHellos(){
         List<Cat> list = new ArrayList<>();
-        var hello1 = new Cat("Dewi1", "Llandeilo1");
+        var hello1 = new Cat("Dewi1", "Llandeilo1", "brown");
         list.add(hello1);
         when(dao.findAll()).thenReturn(list);
 
@@ -39,7 +39,7 @@ public class HelloServiceTests {
 
     @Test
     public void testCreateOrSaveHello(){
-        var hello = new Cat("Dewi2", "Swansea2");
+        var hello = new Cat("Dewi2", "Swansea2", "lol");
         helloService.save(hello);
         verify(dao, times(1)).save(hello);
     }

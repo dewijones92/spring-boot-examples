@@ -9,3 +9,9 @@ DESCRIBE cat;
 
 select * from person_cats;
 DESCRIBE person_cats;
+
+select *
+from information_schema.table_constraints;
+
+select *
+from information_schema.key_column_usage;

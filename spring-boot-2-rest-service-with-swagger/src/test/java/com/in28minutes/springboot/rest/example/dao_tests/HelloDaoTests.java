@@ -19,7 +19,7 @@ public class HelloDaoTests {
 
     @Test
     public void testCreateReadDelete(){
-        var helloDto = new Cat("Dewi2", "Swansea2");
+        var helloDto = new Cat("Dewi2", "Swansea2", "red");
         helloRepository.save(helloDto);
 
         var helloDtos = helloRepository.findAll();
