@@ -22,6 +22,6 @@ public class HelloIntegrationTests {
         helloController.getAll();
         Assertions.assertThat(helloController.getAll()).first().hasFieldOrPropertyWithValue("name", "dewi1");
 
-        helloController.delete(helloDto.getId());
+       // helloController.delete(helloDto.getId());
     }
 }

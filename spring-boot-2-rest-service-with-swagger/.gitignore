@@ -64,4 +64,4 @@ README.html
 .idea
 *.iml
 
-log
+log*

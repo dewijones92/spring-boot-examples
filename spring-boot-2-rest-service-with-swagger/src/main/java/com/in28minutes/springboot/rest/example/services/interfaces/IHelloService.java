@@ -9,4 +9,6 @@ public interface IHelloService {
     Person save(Person person);
 
     void deleteById(Integer id);
+
+    void testTransaction();
 }
