@@ -14,8 +14,8 @@ import io.swagger.v3.oas.annotations.servers.Server;
                 version = "V12.0.12",
                 title = "Awesome Resource API",
                 contact = @Contact(
-                        name = "Ranga Karanam",
-                        email = "ranga.karanam@in28minutes.com",
+                        name = "Dewi Jones",
+                        email = "dewijones92@gmail.com",
                         url = "http://www.in28minutes.com"
                 ),
                 license = @License(
