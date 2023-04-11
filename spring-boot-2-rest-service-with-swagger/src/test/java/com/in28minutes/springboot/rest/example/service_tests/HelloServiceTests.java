@@ -1,7 +1,7 @@
 package com.in28minutes.springboot.rest.example.service_tests;
 
 import com.in28minutes.springboot.rest.example.daos.IHelloRepository;
-import com.in28minutes.springboot.rest.example.dtos.HelloDTO;
+import com.in28minutes.springboot.rest.example.dtos.Person;
 import com.in28minutes.springboot.rest.example.services.HelloService;
 import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
 import org.junit.jupiter.api.Test;
@@ -27,8 +27,8 @@ public class HelloServiceTests {
 
     @Test
     public void testFindAllHellos(){
-        List<HelloDTO> list = new ArrayList<>();
-        var hello1 = new HelloDTO("Dewi1", "Llandeilo1");
+        List<Person> list = new ArrayList<>();
+        var hello1 = new Person("Dewi1", "Llandeilo1");
         list.add(hello1);
         when(dao.findAll()).thenReturn(list);
 
@@ -39,7 +39,7 @@ public class HelloServiceTests {
 
     @Test
     public void testCreateOrSaveHello(){
-        var hello = new HelloDTO("Dewi2", "Swansea2");
+        var hello = new Person("Dewi2", "Swansea2");
         helloService.save(hello);
         verify(dao, times(1)).save(hello);
     }

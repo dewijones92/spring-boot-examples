@@ -2,7 +2,7 @@ package com.in28minutes.springboot.rest.example.controller_tests;
 
 
 import com.in28minutes.springboot.rest.example.controllers.HelloController;
-import com.in28minutes.springboot.rest.example.dtos.HelloDTO;
+import com.in28minutes.springboot.rest.example.dtos.Person;
 import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -33,8 +33,8 @@ public class HelloControllerTests {
 
     @Test
     public void testfindAll() throws Exception {
-        HelloDTO hello = new HelloDTO("Dewi2", "Swansea");
-        List<HelloDTO> hellos = Arrays.asList(hello);
+        Person hello = new Person("Dewi2", "Swansea");
+        List<Person> hellos = Arrays.asList(hello);
         Mockito.when(helloService.getHellos()).thenReturn(hellos);
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())

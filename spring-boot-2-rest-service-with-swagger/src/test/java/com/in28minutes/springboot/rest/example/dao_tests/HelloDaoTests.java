@@ -1,7 +1,7 @@
 package com.in28minutes.springboot.rest.example.dao_tests;
 
 import com.in28minutes.springboot.rest.example.daos.IHelloRepository;
-import com.in28minutes.springboot.rest.example.dtos.HelloDTO;
+import com.in28minutes.springboot.rest.example.dtos.Person;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,11 +19,11 @@ public class HelloDaoTests {
 
     @Test
     public void testCreateReadDelete(){
-        var helloDto = new HelloDTO("Dewi2", "Swansea2");
+        var helloDto = new Person("Dewi2", "Swansea2");
         helloRepository.save(helloDto);
 
         var helloDtos = helloRepository.findAll();
-        Assertions.assertThat(helloDtos).extracting(HelloDTO::getName).containsOnly("Dewi2");
+        Assertions.assertThat(helloDtos).extracting(Person::getName).containsOnly("Dewi2");
 
         helloRepository.deleteAll();
         Assertions.assertThat(helloRepository.findAll()).isEmpty();

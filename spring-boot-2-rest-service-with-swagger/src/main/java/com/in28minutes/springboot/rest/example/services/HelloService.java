@@ -1,7 +1,7 @@
 package com.in28minutes.springboot.rest.example.services;
 
 import com.in28minutes.springboot.rest.example.daos.IHelloRepository;
-import com.in28minutes.springboot.rest.example.dtos.HelloDTO;
+import com.in28minutes.springboot.rest.example.dtos.Person;
 import com.in28minutes.springboot.rest.example.exceptions.RecordNotFoundException;
 import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class HelloService implements IHelloService {
@@ -17,19 +16,19 @@ public class HelloService implements IHelloService {
     IHelloRepository helloRepository;
 
     @Override
-    public List<HelloDTO> getHellos() {
-        var result = new ArrayList<HelloDTO>();
+    public List<Person> getHellos() {
+        var result = new ArrayList<Person>();
         helloRepository.findAll()
                 .forEach(e -> result.add(e));
         return result;
     }
 
     @Override
-    public HelloDTO save(HelloDTO helloDTO) {
-        if(helloDTO.getId() == null){
-            helloRepository.save(helloDTO);
+    public Person save(Person person) {
+        if(person.getId() == null){
+            helloRepository.save(person);
         }
-        return helloDTO;
+        return person;
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.in28minutes.springboot.rest.example.integration_tests;
 
 import com.in28minutes.springboot.rest.example.controllers.HelloController;
-import com.in28minutes.springboot.rest.example.dtos.HelloDTO;
+import com.in28minutes.springboot.rest.example.dtos.Person;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,9 +17,9 @@ public class HelloIntegrationTests {
 
     @Test
     public void testCreateReadDelete(){
-        var helloDto = new HelloDTO("dewi1", "swansea1");
-        var helloResult = helloController.create(helloDto);
-        var hellos = helloController.getAll();
+        var helloDto = new Person("dewi1", "swansea1");
+        helloController.create(helloDto);
+        helloController.getAll();
         Assertions.assertThat(helloController.getAll()).first().hasFieldOrPropertyWithValue("name", "dewi1");
 
         helloController.delete(helloDto.getId());

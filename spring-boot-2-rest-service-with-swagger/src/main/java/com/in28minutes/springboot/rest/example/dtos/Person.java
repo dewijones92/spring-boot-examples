@@ -3,14 +3,16 @@ package com.in28minutes.springboot.rest.example.dtos;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
+import org.springframework.context.annotation.Primary;
 
 @Entity
 @Schema(description = "All details about the hello. ")
-public class HelloDTO {
+public class Person {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Schema(name = "Name should have atleast 2 characters")
@@ -22,14 +24,14 @@ public class HelloDTO {
     private String location;
 
 
-    public HelloDTO(String name,String location) {
+    public Person(String name, String location) {
         super();
         this.id = id;
         this.name = name;
         this.location = location;
     }
 
-    public HelloDTO(){}
+    public Person(){}
 
     public Integer getId() {
         return id;
