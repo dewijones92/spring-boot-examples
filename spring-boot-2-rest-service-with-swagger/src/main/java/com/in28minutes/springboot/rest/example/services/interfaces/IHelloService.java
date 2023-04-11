@@ -7,4 +7,6 @@ import java.util.List;
 public interface IHelloService {
     List<HelloDTO> getHellos();
     HelloDTO save(HelloDTO helloDTO);
+
+    void deleteById(Integer id);
 }

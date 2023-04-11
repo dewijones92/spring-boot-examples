@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Size;
 public class HelloDTO {
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
 
     @Schema(name = "Name should have atleast 2 characters")
     @Size(min = 2, message = "Name should have atleast 2 characters")
@@ -29,11 +29,13 @@ public class HelloDTO {
         this.location = location;
     }
 
-    public Long getId() {
+    public HelloDTO(){}
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

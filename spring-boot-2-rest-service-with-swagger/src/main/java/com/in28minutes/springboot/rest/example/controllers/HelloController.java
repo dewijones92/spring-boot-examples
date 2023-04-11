@@ -5,9 +5,7 @@ import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService
 import com.in28minutes.springboot.rest.example.student.Student;
 import com.in28minutes.springboot.rest.example.student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +16,21 @@ public class HelloController {
     private IHelloService helloService;
 
     @GetMapping()
-    public List<HelloDTO> index() {
+    public List<HelloDTO> getAll() {
         var hellos = helloService.getHellos();
         return hellos;
     }
+
+    @PostMapping()
+    public HelloDTO create(@RequestBody HelloDTO hello){
+        return helloService.save(hello);
+    }
+
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id){
+        helloService.deleteById(id);
+    }
+
 
 }

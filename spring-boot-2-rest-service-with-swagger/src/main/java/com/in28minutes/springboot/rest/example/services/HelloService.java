@@ -2,12 +2,14 @@ package com.in28minutes.springboot.rest.example.services;
 
 import com.in28minutes.springboot.rest.example.daos.IHelloRepository;
 import com.in28minutes.springboot.rest.example.dtos.HelloDTO;
+import com.in28minutes.springboot.rest.example.exceptions.RecordNotFoundException;
 import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HelloService implements IHelloService {
@@ -29,4 +31,17 @@ public class HelloService implements IHelloService {
         }
         return helloDTO;
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        var helloDto = helloRepository.findById(id);
+        if(helloDto.isPresent()){
+            helloRepository.deleteById(id);
+        }
+        else{
+            throw new RecordNotFoundException("No helloDTO record exist for given id");
+        }
+    }
+
+
 }
