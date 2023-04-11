@@ -10,21 +10,12 @@ import io.swagger.v3.oas.annotations.servers.Server;
  */
 @OpenAPIDefinition(
         info = @Info(
-                description = "Awesome Resources",
-                version = "V12.0.12",
-                title = "Awesome Resource API",
                 contact = @Contact(
                         name = "Dewi Jones",
                         email = "dewijones92@gmail.com",
                         url = "http://www.in28minutes.com"
-                ),
-                license = @License(
-                        name = "Apache 2.0",
-                        url = "http://www.apache.org/licenses/LICENSE-2.0"
                 )
-        ),
-        servers = {@Server(url = "http://in28minutes.com")}
-)
+        ))
 public interface ApiDocumentationConfig {
 
 }
