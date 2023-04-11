@@ -2,5 +2,10 @@ SHOW DATABASES;
 use db_example;
 SHOW TABLES;
 select * from person;
+DESCRIBE person;
+
 select * from cat;
+DESCRIBE cat;
+
 select * from person_cats;
+DESCRIBE person_cats;
