@@ -5,5 +5,6 @@ import com.in28minutes.springboot.rest.example.dtos.HelloDTO;
 import java.util.List;
 
 public interface IHelloService {
-    public List<HelloDTO> getHellos();
+    List<HelloDTO> getHellos();
+    HelloDTO save(HelloDTO helloDTO);
 }

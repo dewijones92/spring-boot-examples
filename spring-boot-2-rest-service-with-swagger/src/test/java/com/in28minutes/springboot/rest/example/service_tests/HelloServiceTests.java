@@ -36,4 +36,11 @@ public class HelloServiceTests {
         assertEquals(1, empList.size());
         verify(dao, times(1)).findAll();
     }
+
+    @Test
+    public void testCreateOrSaveHello(){
+        var hello = new HelloDTO("Dewi2", "Swansea2");
+        helloService.save(hello);
+        verify(dao, times(1)).save(hello);
+    }
 }

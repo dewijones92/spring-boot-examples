@@ -21,4 +21,12 @@ public class HelloService implements IHelloService {
                 .forEach(e -> result.add(e));
         return result;
     }
+
+    @Override
+    public HelloDTO save(HelloDTO helloDTO) {
+        if(helloDTO.getId() == null){
+            helloRepository.save(helloDTO);
+        }
+        return helloDTO;
+    }
 }
