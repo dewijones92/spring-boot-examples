@@ -1,6 +1,6 @@
 package com.in28minutes.springboot.rest.example.controllers;
-import com.in28minutes.springboot.rest.example.dtos.Person;
-import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
+import com.in28minutes.springboot.rest.example.dtos.Cat;
+import com.in28minutes.springboot.rest.example.services.interfaces.ICatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,19 +9,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/hello")
-public class HelloController {
+public class CatController {
     @Autowired
-    private IHelloService helloService;
+    private ICatService helloService;
 
     @GetMapping()
-    public List<Person> getAll() {
+    public List<Cat> getAll() {
         var hellos = helloService.getHellos();
         return hellos;
     }
 
     @PostMapping()
-    public Person create(@RequestBody Person hello){
-        var person = new Person();
+    public Cat create(@RequestBody Cat hello){
+        var person = new Cat();
         person.setName("dewi");
         return helloService.save(hello);
     }

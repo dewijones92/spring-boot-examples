@@ -1,9 +1,9 @@
 package com.in28minutes.springboot.rest.example.services;
 
-import com.in28minutes.springboot.rest.example.daos.IHelloRepository;
-import com.in28minutes.springboot.rest.example.dtos.Person;
+import com.in28minutes.springboot.rest.example.daos.ICatRepository;
+import com.in28minutes.springboot.rest.example.dtos.Cat;
 import com.in28minutes.springboot.rest.example.exceptions.RecordNotFoundException;
-import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
+import com.in28minutes.springboot.rest.example.services.interfaces.ICatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -14,26 +14,26 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 @Service
-public class HelloService implements IHelloService {
+public class CatService implements ICatService {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
             @Autowired
-    IHelloRepository helloRepository;
+            ICatRepository helloRepository;
 
     @Override
-    public List<Person> getHellos() {
-        var result = new ArrayList<Person>();
+    public List<Cat> getHellos() {
+        var result = new ArrayList<Cat>();
         helloRepository.findAll()
                 .forEach(e -> result.add(e));
         return result;
     }
 
     @Override
-    public Person save(Person person) {
-        helloRepository.save(person);
-        return person;
+    public Cat save(Cat cat) {
+        helloRepository.save(cat);
+        return cat;
     }
 
     @Override

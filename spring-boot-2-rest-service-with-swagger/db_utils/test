@@ -1,0 +1,6 @@
+SHOW DATABASES;
+use db_example;
+SHOW TABLES;
+select * from person;
+select * from cat;
+select * from person_cats;

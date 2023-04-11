@@ -1,8 +1,7 @@
 package com.in28minutes.springboot.rest.example.integration_tests;
 
-import com.in28minutes.springboot.rest.example.controllers.HelloController;
-import com.in28minutes.springboot.rest.example.dtos.Person;
-import org.assertj.core.api.Assertions;
+import com.in28minutes.springboot.rest.example.controllers.CatController;
+import com.in28minutes.springboot.rest.example.dtos.Cat;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +14,13 @@ import static org.springframework.test.util.AssertionErrors.assertTrue;
 @SpringBootTest
 public class HelloIntegrationTests {
     @Autowired
-    HelloController helloController;
+    CatController catController;
 
     @Test
     public void testCreateReadDelete(){
-        var helloDto = new Person("dewi1", "swansea1");
-        helloController.create(helloDto);
-        helloController.getAll();
+        var helloDto = new Cat("dewi1", "swansea1");
+        catController.create(helloDto);
+        catController.getAll();
         //Assertions.assertThat(helloController.getAll()).first().hasFieldOrPropertyWithValue("name", "dewi1");
 
         assertTrue("true", true);

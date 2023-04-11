@@ -1,9 +1,9 @@
 package com.in28minutes.springboot.rest.example.service_tests;
 
-import com.in28minutes.springboot.rest.example.daos.IHelloRepository;
-import com.in28minutes.springboot.rest.example.dtos.Person;
-import com.in28minutes.springboot.rest.example.services.HelloService;
-import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
+import com.in28minutes.springboot.rest.example.daos.ICatRepository;
+import com.in28minutes.springboot.rest.example.dtos.Cat;
+import com.in28minutes.springboot.rest.example.services.CatService;
+import com.in28minutes.springboot.rest.example.services.interfaces.ICatService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,15 +20,15 @@ import static org.mockito.Mockito.*;
 public class HelloServiceTests {
 
     @InjectMocks
-    IHelloService helloService = new HelloService();
+    ICatService helloService = new CatService();
 
     @Mock
-    IHelloRepository dao;
+    ICatRepository dao;
 
     @Test
     public void testFindAllHellos(){
-        List<Person> list = new ArrayList<>();
-        var hello1 = new Person("Dewi1", "Llandeilo1");
+        List<Cat> list = new ArrayList<>();
+        var hello1 = new Cat("Dewi1", "Llandeilo1");
         list.add(hello1);
         when(dao.findAll()).thenReturn(list);
 
@@ -39,7 +39,7 @@ public class HelloServiceTests {
 
     @Test
     public void testCreateOrSaveHello(){
-        var hello = new Person("Dewi2", "Swansea2");
+        var hello = new Cat("Dewi2", "Swansea2");
         helloService.save(hello);
         verify(dao, times(1)).save(hello);
     }

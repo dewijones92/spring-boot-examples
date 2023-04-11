@@ -1,40 +1,42 @@
-package com.in28minutes.springboot.rest.example.student;
+package com.in28minutes.springboot.rest.example.dtos;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Schema(description = "All details about the student. ")
-public class Student {
+@Schema(description = "All details about the cat. ")
+public class Cat {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Schema(name = "Name should have atleast 2 characters")
     @Size(min = 2, message = "Name should have atleast 2 characters")
     private String name;
 
-    private String passportNumber;
+    @Schema(name = "Location should have atleast 2 characters")
+    @Size(min = 2, message = "Name should have atleast 2 characters")
+    private String location;
 
-    public Student() {
-        super();
-    }
 
-    public Student(Long id, String name, String passportNumber) {
+    public Cat(String name, String location) {
         super();
         this.id = id;
         this.name = name;
-        this.passportNumber = passportNumber;
+        this.location = location;
     }
 
-    public Long getId() {
+    public Cat(){}
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,12 +48,5 @@ public class Student {
         this.name = name;
     }
 
-    public String getPassportNumber() {
-        return passportNumber;
-    }
-
-    public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
-    }
 
 }

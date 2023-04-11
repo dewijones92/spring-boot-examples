@@ -1,9 +1,9 @@
 package com.in28minutes.springboot.rest.example.controller_tests;
 
 
-import com.in28minutes.springboot.rest.example.controllers.HelloController;
-import com.in28minutes.springboot.rest.example.dtos.Person;
-import com.in28minutes.springboot.rest.example.services.interfaces.IHelloService;
+import com.in28minutes.springboot.rest.example.controllers.CatController;
+import com.in28minutes.springboot.rest.example.dtos.Cat;
+import com.in28minutes.springboot.rest.example.services.interfaces.ICatService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,19 +22,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(HelloController.class)
-public class HelloControllerTests {
+@WebMvcTest(CatController.class)
+public class CatControllerTests {
 
     @MockBean
-    IHelloService helloService;
+    ICatService helloService;
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
     public void testfindAll() throws Exception {
-        Person hello = new Person("Dewi2", "Swansea");
-        List<Person> hellos = Arrays.asList(hello);
+        Cat hello = new Cat("Dewi2", "Swansea");
+        List<Cat> hellos = Arrays.asList(hello);
         Mockito.when(helloService.getHellos()).thenReturn(hellos);
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
