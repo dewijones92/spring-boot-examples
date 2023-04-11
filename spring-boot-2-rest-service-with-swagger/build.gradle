@@ -5,9 +5,16 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'org.springframework.boot' version '3.0.0'
 }
 
+test {
+    useJUnitPlatform()
+}
+
+
 repositories {
+    mavenCentral()
     mavenLocal()
     maven {
         url = uri('https://repo.spring.io/snapshot')
@@ -37,7 +44,9 @@ dependencies {
     api 'org.springframework.boot:spring-boot-starter-validation:3.0.2'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools:3.0.2'
     runtimeOnly 'com.h2database:h2:2.1.214'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.2'
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    testImplementation('org.junit.jupiter:junit-jupiter-engine')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.5'
 }
 
 group = 'com.in28minutes.springboot.rest.example'
