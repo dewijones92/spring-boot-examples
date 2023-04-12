@@ -16,6 +16,18 @@ public class Person {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCats(Set<Cat> cats) {
+        this.cats = cats;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

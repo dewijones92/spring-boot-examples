@@ -3,6 +3,7 @@ package com.dewi.jones.services;
 import com.dewi.jones.daos.IPersonRepository;
 import com.dewi.jones.dtos.CatDTO;
 import com.dewi.jones.dtos.PersonDTO;
+import com.dewi.jones.entities.Cat;
 import com.dewi.jones.entities.Person;
 import com.dewi.jones.services.interfaces.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,22 @@ public class PersonService implements IPersonService {
             result.add(person);
         });
         return result;
+    }
+
+    @Override
+    public Person save(PersonDTO personDto) {
+        Person person = new Person();
+        person.setName(personDto.getName());
+        person.setId(personDto.getId());
+        person.setCats(personDto.catDTOS.stream().map(catDTO -> {
+            var cat = new Cat();
+            cat.setId(catDTO.getId());
+            cat.setName(catDTO.getName());
+            cat.setColour(catDTO.getColour());
+            return cat;
+        }).collect(Collectors.toSet()));
+        personRepo.save(person);
+        return null;
     }
 
 }
