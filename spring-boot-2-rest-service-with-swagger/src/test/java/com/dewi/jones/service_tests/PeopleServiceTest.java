@@ -1,11 +1,8 @@
 package com.dewi.jones.service_tests;
 
 import com.dewi.jones.daos.IPersonRepository;
-import com.dewi.jones.dtos.CatDTO;
-import com.dewi.jones.dtos.PersonDTO;
 import com.dewi.jones.entities.Person;
 import com.dewi.jones.services.PersonService;
-import com.dewi.jones.daos.ICatRepository;
 import com.dewi.jones.entities.Cat;
 import com.dewi.jones.services.interfaces.IPersonService;
 import org.junit.jupiter.api.Test;
@@ -45,7 +42,7 @@ public class PeopleServiceTest {
         when(dao.findAll()).thenReturn(list);
 
         var serviceResponse = personService.getPeople();
-        assertEquals(serviceResponse.get(0).catDTOS.size(), 1);
+        assertEquals(serviceResponse.get(0).cats.size(), 1);
         assertEquals(1, serviceResponse.size());
         verify(dao, times(1)).findAll();
     }

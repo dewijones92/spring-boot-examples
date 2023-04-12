@@ -1,10 +1,10 @@
-package com.dewi.jones.dtos;
+package com.dewi.jones.dtos.response;
 
 import java.util.HashSet;
 import java.util.Set;
 
 
-public class PersonDTO {
+public class PersonResponseDTO {
 
     public Integer getId() {
         return id;
@@ -26,5 +26,5 @@ public class PersonDTO {
 
     private String name;
 
-    public Set<CatDTO> catDTOS = new HashSet<>();
+    public Set<CatResponseDTO> cats = new HashSet<>();
 }

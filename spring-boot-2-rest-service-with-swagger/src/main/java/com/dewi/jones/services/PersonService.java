@@ -1,10 +1,12 @@
 package com.dewi.jones.services;
 
 import com.dewi.jones.daos.IPersonRepository;
-import com.dewi.jones.dtos.CatDTO;
-import com.dewi.jones.dtos.PersonDTO;
+import com.dewi.jones.dtos.request.PersonRequestDTO;
+import com.dewi.jones.dtos.response.CatResponseDTO;
+import com.dewi.jones.dtos.response.PersonResponseDTO;
 import com.dewi.jones.entities.Cat;
 import com.dewi.jones.entities.Person;
+import com.dewi.jones.exceptions.RecordNotFoundException;
 import com.dewi.jones.services.interfaces.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,39 +25,64 @@ public class PersonService implements IPersonService {
     @Autowired
     IPersonRepository personRepo;
 
+
+
+
     @Override
-    public List<PersonDTO> getPeople() {
-        var result = new ArrayList<PersonDTO>();
+    public List<PersonResponseDTO> getPeople() {
+        var result = new ArrayList<PersonResponseDTO>();
         personRepo.findAll().forEach(db_result -> {
-            var person = new PersonDTO();
-            person.setId(db_result.getId());
-            person.setName(db_result.getName());
-            person.catDTOS = db_result.cats.stream().map(cat_db_result -> {
-                var catDTO = new CatDTO();
-                catDTO.setColour(cat_db_result.getColour());
-                catDTO.setId(cat_db_result.getId());
-                catDTO.setName(cat_db_result.getName());
-                return catDTO;
-            }).collect(Collectors.toSet());
-            result.add(person);
+            result.add(mapPesonEntitiyToPersonResponseDTO(db_result));
         });
         return result;
     }
 
     @Override
-    public Person save(PersonDTO personDto) {
-        Person person = new Person();
-        person.setName(personDto.getName());
-        person.setId(personDto.getId());
-        person.setCats(personDto.catDTOS.stream().map(catDTO -> {
-            var cat = new Cat();
-            cat.setId(catDTO.getId());
-            cat.setName(catDTO.getName());
-            cat.setColour(catDTO.getColour());
-            return cat;
+    public PersonResponseDTO save(PersonRequestDTO personRequestDTO) {
+        var personEntity = mapPersonRequestDTOtoPersonEntity(personRequestDTO);
+        Person personSavedEntity = personRepo.save(personEntity);
+        return mapPesonEntitiyToPersonResponseDTO(personSavedEntity);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        var person = personRepo.findById(id);
+        if(person.isPresent()){
+            personRepo.deleteById(id);
+        }
+        else{
+            throw new RecordNotFoundException("No person record exist for given id");
+        }
+    }
+
+    private PersonResponseDTO mapPesonEntitiyToPersonResponseDTO(Person personEntity) {
+        var personDto = new PersonResponseDTO();
+        personDto.setId(personEntity.getId());
+        personDto.setName(personEntity.getName());
+        var catsDto = personEntity.cats.stream().map(catEntity -> {
+            var catResponse = new CatResponseDTO();
+            catResponse.setColour(catEntity.getColour());
+            catResponse.setId(catEntity.getId());
+            catResponse.setName(catEntity.getName());
+            return catResponse;
+        });
+        personDto.cats = catsDto.collect(Collectors.toSet());
+
+        return personDto;
+    }
+
+    private Person mapPersonRequestDTOtoPersonEntity(PersonRequestDTO personRequestDTO) {
+        var personEntity = new Person();
+        personEntity.setName(personRequestDTO.getName());
+        personEntity.setCats(personRequestDTO.cats.stream().map(c -> {
+            var catEntitiy = new Cat();
+            catEntitiy.setColour(c.getColour());
+            catEntitiy.setLocation(c.getLocation());
+            catEntitiy.setName(c.getName());
+            return  catEntitiy;
         }).collect(Collectors.toSet()));
-        personRepo.save(person);
-        return null;
+
+        return personEntity;
     }
 
 }

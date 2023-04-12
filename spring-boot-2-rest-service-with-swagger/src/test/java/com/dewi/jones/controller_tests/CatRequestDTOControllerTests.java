@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(CatController.class)
-public class CatDTOControllerTests {
+public class CatRequestDTOControllerTests {
 
     @MockBean
     ICatService helloService;

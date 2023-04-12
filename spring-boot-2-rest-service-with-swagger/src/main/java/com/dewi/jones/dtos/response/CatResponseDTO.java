@@ -1,7 +1,7 @@
-package com.dewi.jones.dtos;
+package com.dewi.jones.dtos.response;
 
 
-public class CatDTO {
+public class CatResponseDTO {
 
     private Integer id;
 
@@ -22,7 +22,7 @@ public class CatDTO {
     private String colour;
 
 
-    public CatDTO(String name, String location, String colour) {
+    public CatResponseDTO(String name, String location, String colour) {
         super();
         this.id = id;
         this.name = name;
@@ -30,7 +30,7 @@ public class CatDTO {
         this.colour = colour;
     }
 
-    public CatDTO(){}
+    public CatResponseDTO(){}
 
     public Integer getId() {
         return id;

@@ -19,6 +19,14 @@ public class Cat {
     @Size(min = 2, message = "Name should have atleast 2 characters")
     private String name;
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     @Schema(name = "Location should have atleast 2 characters")
     @Size(min = 2, message = "Name should have atleast 2 characters")
     private String location;

@@ -1,14 +1,15 @@
 package com.dewi.jones.services.interfaces;
 
-import com.dewi.jones.dtos.PersonDTO;
-import com.dewi.jones.entities.Cat;
+import com.dewi.jones.dtos.request.PersonRequestDTO;
+import com.dewi.jones.dtos.response.PersonResponseDTO;
 import com.dewi.jones.entities.Person;
 
 import java.util.List;
 
 public interface IPersonService {
-    List<PersonDTO> getPeople();
+    List<PersonResponseDTO> getPeople();
 
-    Person save(PersonDTO person);
+    PersonResponseDTO save(PersonRequestDTO person);
 
+    void deleteById(Integer id);
 }
