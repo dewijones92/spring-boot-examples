@@ -35,7 +35,7 @@ public class CatControllerTests {
     public void testfindAll() throws Exception {
         Cat hello = new Cat("Dewi2", "Swansea", "Blue");
         List<Cat> hellos = Arrays.asList(hello);
-        Mockito.when(helloService.getHellos()).thenReturn(hellos);
+        Mockito.when(helloService.getCats()).thenReturn(hellos);
         mockMvc.perform(get("/cat"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))

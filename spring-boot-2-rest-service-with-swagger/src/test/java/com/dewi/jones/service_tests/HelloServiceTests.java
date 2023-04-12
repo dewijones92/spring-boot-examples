@@ -32,7 +32,7 @@ public class HelloServiceTests {
         list.add(hello1);
         when(dao.findAll()).thenReturn(list);
 
-        var empList = helloService.getHellos();
+        var empList = helloService.getCats();
         assertEquals(1, empList.size());
         verify(dao, times(1)).findAll();
     }

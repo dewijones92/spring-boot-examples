@@ -15,14 +15,14 @@ public class CatController {
 
     @GetMapping()
     public List<Cat> getAll() {
-        var hellos = helloService.getHellos();
-        return hellos;
+        var cats = helloService.getCats();
+        return cats;
     }
 
     @PostMapping()
     public Cat create(@RequestBody Cat hello){
-        var person = new Cat();
-        person.setName("dewi");
+        var cat = new Cat();
+        cat.setName("dewi");
         return helloService.save(hello);
     }
 

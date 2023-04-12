@@ -23,7 +23,7 @@ public class CatService implements ICatService {
             ICatRepository helloRepository;
 
     @Override
-    public List<Cat> getHellos() {
+    public List<Cat> getCats() {
         var result = new ArrayList<Cat>();
         helloRepository.findAll()
                 .forEach(e -> result.add(e));
