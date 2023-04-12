@@ -4,10 +4,6 @@ package com.dewi.jones.controller_tests;
 import com.dewi.jones.controllers.PersonController;
 import com.dewi.jones.dtos.response.CatResponseDTO;
 import com.dewi.jones.dtos.response.PersonResponseDTO;
-import com.dewi.jones.entities.Cat;
-import com.dewi.jones.entities.Person;
-import com.dewi.jones.services.interfaces.ICatService;
-import com.dewi.jones.controllers.CatController;
 import com.dewi.jones.services.interfaces.IPersonService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
@@ -20,9 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -30,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(PersonController.class)
-public class CatRequestDTOControllerTests {
+public class PersonControllerTests {
 
     @MockBean
     IPersonService personService;
