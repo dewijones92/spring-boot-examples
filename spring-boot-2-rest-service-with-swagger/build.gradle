@@ -48,6 +48,8 @@ dependencies {
     testImplementation('org.junit.jupiter:junit-jupiter')
     testImplementation('org.junit.jupiter:junit-jupiter-engine')
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.5'
+    api 'com.h2database:h2:2.1.214'
+
 }
 
 group = 'com.in28minutes.springboot.rest.example'
