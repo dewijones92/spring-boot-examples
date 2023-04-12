@@ -1,9 +1,14 @@
 package com.dewi.jones.controller_tests;
 
 
+import com.dewi.jones.controllers.PersonController;
+import com.dewi.jones.dtos.response.CatResponseDTO;
+import com.dewi.jones.dtos.response.PersonResponseDTO;
 import com.dewi.jones.entities.Cat;
+import com.dewi.jones.entities.Person;
 import com.dewi.jones.services.interfaces.ICatService;
 import com.dewi.jones.controllers.CatController;
+import com.dewi.jones.services.interfaces.IPersonService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +19,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -22,23 +29,31 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(CatController.class)
+@WebMvcTest(PersonController.class)
 public class CatRequestDTOControllerTests {
 
     @MockBean
-    ICatService helloService;
+    IPersonService personService;
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
     public void testfindAll() throws Exception {
-        Cat hello = new Cat("Dewi2", "Swansea", "Blue");
-        List<Cat> hellos = Arrays.asList(hello);
-        Mockito.when(helloService.getCats()).thenReturn(hellos);
-        mockMvc.perform(get("/cat"))
+        var person = new PersonResponseDTO();
+        person.setName("dewi person");
+        person.cats = new HashSet<>();
+        var catResponseDTO = new CatResponseDTO();
+        catResponseDTO.setName("Dewi cat");
+        person.cats.add(catResponseDTO);
+        var personList = new ArrayList<PersonResponseDTO>();
+        personList.add(person);
+
+
+        Mockito.when(personService.getPeople()).thenReturn(personList);
+        mockMvc.perform(get("/person"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", Matchers.hasSize(1)))
-                .andExpect(jsonPath("$[0].name", Matchers.is("Dewi2")));
+                .andExpect(jsonPath("$[0].name", Matchers.is("dewi person")));
     }
 }
