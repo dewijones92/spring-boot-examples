@@ -1,11 +1,11 @@
 
 --select * from person22;
 
-insert into person (location, name)
-values('sql_llandeilo', 'sql_dewi');
+
+insert ignore into person (id, name)
+values(1, 'sql_dewi_100');
 
 
-insert into
 
 
 select * from person
