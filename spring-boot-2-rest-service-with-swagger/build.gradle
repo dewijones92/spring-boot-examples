@@ -49,6 +49,7 @@ dependencies {
     testImplementation('org.junit.jupiter:junit-jupiter-engine')
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.5'
     api 'com.h2database:h2:2.1.214'
+    testImplementation 'io.cucumber:cucumber-java:7.11.2'
 
 }
 
@@ -74,4 +75,25 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Javadoc) {
     options.encoding = 'UTF-8'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumberCli() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:target/cucumber-report.html',
+                    '--glue', 'com.baeldung.cucumber',
+                    'src/test/resources']
+        }
+    }
 }
