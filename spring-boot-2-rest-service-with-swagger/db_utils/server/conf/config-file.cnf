@@ -1,0 +1,4 @@
+[mysqld]
+port = 3306
+general_log = on
+general_log_file = /var/run/mysqld/mysqld.log

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,6 +43,17 @@ public class PersonService implements IPersonService {
         var personEntity = mapPersonRequestDTOtoPersonEntity(personRequestDTO);
         Person personSavedEntity = personRepo.save(personEntity);
         return mapPesonEntitiyToPersonResponseDTO(personSavedEntity);
+    }
+
+    @Override
+    public PersonResponseDTO get(Integer id) {
+        Optional<Person> person = personRepo.findById(id);
+        if(person.isPresent()){
+            return mapPesonEntitiyToPersonResponseDTO(person.get());
+        }
+        else{
+            throw new RecordNotFoundException("No person record exist for given id");
+        }
     }
 
     @Override

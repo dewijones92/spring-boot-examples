@@ -20,6 +20,12 @@ public class PersonController {
         return people;
     }
 
+    @GetMapping("{id}")
+    public PersonResponseDTO get(@PathVariable Integer id) {
+        var people = personService.get(id);
+        return people;
+    }
+
     @PostMapping()
     public PersonResponseDTO create(@RequestBody PersonRequestDTO hello){
         var cat = new Cat();

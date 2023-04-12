@@ -40,6 +40,6 @@ public class Person {
     @Size(min = 2, message = "Name should have atleast 2 characters")
     private String name;
 
-    @OneToMany(cascade=ALL)
+    @OneToMany(cascade=ALL, fetch = FetchType.EAGER)
     public Set<Cat> cats = new HashSet<>();
 }

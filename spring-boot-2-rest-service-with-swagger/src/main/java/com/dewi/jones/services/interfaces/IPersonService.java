@@ -11,5 +11,7 @@ public interface IPersonService {
 
     PersonResponseDTO save(PersonRequestDTO person);
 
+    PersonResponseDTO get(Integer id);
+
     void deleteById(Integer id);
 }
