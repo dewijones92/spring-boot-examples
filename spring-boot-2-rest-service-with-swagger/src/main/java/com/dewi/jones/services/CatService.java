@@ -1,7 +1,7 @@
 package com.dewi.jones.services;
 
 import com.dewi.jones.daos.ICatRepository;
-import com.dewi.jones.dtos.Cat;
+import com.dewi.jones.entities.Cat;
 import com.dewi.jones.exceptions.RecordNotFoundException;
 import com.dewi.jones.services.interfaces.ICatService;
 import org.springframework.beans.factory.annotation.Autowired;

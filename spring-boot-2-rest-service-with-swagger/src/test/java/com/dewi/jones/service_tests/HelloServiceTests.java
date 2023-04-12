@@ -2,7 +2,7 @@ package com.dewi.jones.service_tests;
 
 import com.dewi.jones.services.interfaces.ICatService;
 import com.dewi.jones.daos.ICatRepository;
-import com.dewi.jones.dtos.Cat;
+import com.dewi.jones.entities.Cat;
 import com.dewi.jones.services.CatService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

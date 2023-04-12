@@ -1,4 +1,4 @@
-package com.dewi.jones.dtos;
+package com.dewi.jones.entities;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;

@@ -1,10 +1,8 @@
 package com.dewi.jones.controllers;
-import com.dewi.jones.dtos.Cat;
-import com.dewi.jones.dtos.Person;
-import com.dewi.jones.services.interfaces.ICatService;
+import com.dewi.jones.dtos.PersonDTO;
+import com.dewi.jones.entities.Person;
 import com.dewi.jones.services.interfaces.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +14,7 @@ public class PersonController {
     private IPersonService helloService;
 
     @GetMapping()
-    public List<Person> getAll() {
+    public List<PersonDTO> getAll() {
         var people = helloService.getPeople();
         return people;
     }

@@ -1,6 +1,6 @@
 package com.dewi.jones.integration_tests;
 
-import com.dewi.jones.dtos.Cat;
+import com.dewi.jones.entities.Cat;
 import com.dewi.jones.controllers.CatController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

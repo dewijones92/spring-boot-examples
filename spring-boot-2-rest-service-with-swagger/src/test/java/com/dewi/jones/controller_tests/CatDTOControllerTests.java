@@ -1,7 +1,7 @@
 package com.dewi.jones.controller_tests;
 
 
-import com.dewi.jones.dtos.Cat;
+import com.dewi.jones.entities.Cat;
 import com.dewi.jones.services.interfaces.ICatService;
 import com.dewi.jones.controllers.CatController;
 import org.hamcrest.Matchers;
@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(CatController.class)
-public class CatControllerTests {
+public class CatDTOControllerTests {
 
     @MockBean
     ICatService helloService;

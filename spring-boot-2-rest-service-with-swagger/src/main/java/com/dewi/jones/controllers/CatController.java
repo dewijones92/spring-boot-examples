@@ -1,5 +1,5 @@
 package com.dewi.jones.controllers;
-import com.dewi.jones.dtos.Cat;
+import com.dewi.jones.entities.Cat;
 import com.dewi.jones.services.interfaces.ICatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

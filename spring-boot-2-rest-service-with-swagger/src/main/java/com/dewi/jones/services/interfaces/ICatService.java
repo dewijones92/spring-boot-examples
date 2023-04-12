@@ -1,6 +1,6 @@
 package com.dewi.jones.services.interfaces;
 
-import com.dewi.jones.dtos.Cat;
+import com.dewi.jones.entities.Cat;
 
 import java.util.List;
 

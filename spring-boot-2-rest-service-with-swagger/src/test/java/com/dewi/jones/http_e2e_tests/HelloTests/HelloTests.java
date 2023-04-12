@@ -1,6 +1,6 @@
 package com.dewi.jones.http_e2e_tests.HelloTests;
 
-import com.dewi.jones.dtos.Cat;
+import com.dewi.jones.entities.Cat;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 
