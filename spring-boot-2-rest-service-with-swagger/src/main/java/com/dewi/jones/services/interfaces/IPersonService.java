@@ -4,6 +4,7 @@ import com.dewi.jones.dtos.request.PersonRequestDTO;
 import com.dewi.jones.dtos.response.PersonResponseDTO;
 import com.dewi.jones.entities.Person;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IPersonService {
@@ -14,4 +15,6 @@ public interface IPersonService {
     PersonResponseDTO get(Integer id);
 
     void deleteById(Integer id);
+
+    Integer getAge(LocalDate currentDateTime, PersonResponseDTO person);
 }

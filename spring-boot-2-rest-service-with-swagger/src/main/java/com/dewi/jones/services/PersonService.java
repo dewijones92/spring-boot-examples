@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -67,10 +68,16 @@ public class PersonService implements IPersonService {
         }
     }
 
+    @Override
+    public Integer getAge(LocalDate currentDateTime, PersonResponseDTO person) {
+        return null;
+    }
+
     private PersonResponseDTO mapPesonEntitiyToPersonResponseDTO(Person personEntity) {
         var personDto = new PersonResponseDTO();
         personDto.setId(personEntity.getId());
         personDto.setName(personEntity.getName());
+        personDto.setDob(personEntity.getDob());
         var catsDto = personEntity.cats.stream().map(catEntity -> {
             var catResponse = new CatResponseDTO();
             catResponse.setColour(catEntity.getColour());
@@ -86,6 +93,7 @@ public class PersonService implements IPersonService {
     private Person mapPersonRequestDTOtoPersonEntity(PersonRequestDTO personRequestDTO) {
         var personEntity = new Person();
         personEntity.setName(personRequestDTO.getName());
+        personEntity.setDob(personRequestDTO.getDob());
         personEntity.setCats(personRequestDTO.cats.stream().map(c -> {
             var catEntitiy = new Cat();
             catEntitiy.setColour(c.getColour());
