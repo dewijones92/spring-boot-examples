@@ -93,7 +93,7 @@ task cucumberCli() {
             args = [
                     '--plugin', 'pretty',
                     '--plugin', 'html:target/cucumber-report.html',
-                    '--glue', 'com.baeldung.cucumber',
+                    '--glue', 'com.dewi.jones.cucumber',
                     'src/test/resources']
         }
     }
