@@ -1,4 +1,4 @@
-package com.dewi.jones.integration_tests;
+package com.dewi.jones.tdd.integration_tests;
 
 import com.dewi.jones.controllers.PersonController;
 import com.dewi.jones.dtos.request.CatRequestDTO;

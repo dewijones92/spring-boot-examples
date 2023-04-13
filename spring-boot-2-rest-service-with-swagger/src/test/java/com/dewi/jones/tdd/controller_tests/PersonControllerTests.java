@@ -1,4 +1,4 @@
-package com.dewi.jones.controller_tests;
+package com.dewi.jones.tdd.controller_tests;
 
 
 import com.dewi.jones.controllers.PersonController;

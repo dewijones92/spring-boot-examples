@@ -1,4 +1,4 @@
-package com.dewi.jones.service_tests;
+package com.dewi.jones.tdd.service_tests;
 
 import com.dewi.jones.daos.IPersonRepository;
 import com.dewi.jones.entities.Person;

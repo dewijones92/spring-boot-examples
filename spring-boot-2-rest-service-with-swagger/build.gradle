@@ -6,6 +6,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'org.springframework.boot' version '3.0.0'
+    id "se.thinkcode.cucumber-runner" version "0.0.11"
 }
 
 test {
