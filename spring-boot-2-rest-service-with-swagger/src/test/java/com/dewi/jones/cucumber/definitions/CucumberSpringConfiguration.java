@@ -5,6 +5,7 @@ import org.junit.platform.suite.api.IncludeEngines;
 import org.junit.platform.suite.api.SelectClasspathResource;
 import org.junit.platform.suite.api.Suite;
 import org.springframework.boot.test.context.SpringBootTest;
+import io.cucumber.spring.CucumberContextConfiguration;
 
 import static io.cucumber.core.options.Constants.GLUE_PROPERTY_NAME;
 import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
@@ -14,5 +15,7 @@ import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
 @SelectClasspathResource("com/dewi/jones/cucumber/definitions")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.dewi.jones.cucumber.definitions")
+@CucumberContextConfiguration
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CucumberSpringConfiguration {
 }

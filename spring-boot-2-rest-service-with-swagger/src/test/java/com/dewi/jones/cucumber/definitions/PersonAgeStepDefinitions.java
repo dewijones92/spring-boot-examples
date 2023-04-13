@@ -27,8 +27,8 @@ public class PersonAgeStepDefinitions {
     public void today_is(String today, String personDob) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         this.today = LocalDateTime.parse(today, formatter);
-        var personResponseDTO = new PersonResponseDTO();
-        personResponseDTO.setDob(LocalDateTime.parse(personDob, formatter));
+        person = new PersonResponseDTO();
+        person.setDob(LocalDateTime.parse(personDob, formatter));
     }
 
     @When("I ask their age")
@@ -36,7 +36,7 @@ public class PersonAgeStepDefinitions {
         actualAgeAnswer = personService.getAgeInYears(today, person);
     }
 
-    @Then("I should be told {string}")
+    @Then("I should be told {long}")
     public void i_should_be_told(Long expectedAnswer) {
         assertEquals(expectedAnswer, actualAgeAnswer);
     }

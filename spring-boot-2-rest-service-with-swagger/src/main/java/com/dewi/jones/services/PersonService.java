@@ -73,7 +73,7 @@ public class PersonService implements IPersonService {
 
     @Override
     public Long getAgeInYears(LocalDateTime currentDateTime, PersonResponseDTO person) {
-        return ChronoUnit.YEARS.between(currentDateTime, person.getDob());
+        return ChronoUnit.YEARS.between(person.getDob(), currentDateTime);
     }
 
     private PersonResponseDTO mapPesonEntitiyToPersonResponseDTO(Person personEntity) {
