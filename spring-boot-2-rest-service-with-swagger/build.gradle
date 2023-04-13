@@ -46,11 +46,20 @@ dependencies {
     api 'org.springframework.boot:spring-boot-starter-validation:3.0.2'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools:3.0.2'
     api 'mysql:mysql-connector-java:8.0.32'
+    testImplementation(platform("io.cucumber:cucumber-bom:7.11.2"))
     testImplementation('org.junit.jupiter:junit-jupiter')
     testImplementation('org.junit.jupiter:junit-jupiter-engine')
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.5'
     api 'com.h2database:h2:2.1.214'
     testImplementation 'io.cucumber:cucumber-java:7.11.2'
+    testImplementation 'io.cucumber:cucumber-junit:7.11.2'
+
+    testImplementation(platform("org.junit:junit-bom:5.9.2"))
+    testImplementation(platform("io.cucumber:cucumber-bom:7.11.2"))
+
+    testImplementation("io.cucumber:cucumber-junit-platform-engine")
+    testImplementation("org.junit.platform:junit-platform-suite")
+
 
 }
 
@@ -81,20 +90,5 @@ tasks.withType(Javadoc) {
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
-    }
-}
-
-task cucumberCli() {
-    dependsOn assemble, testClasses
-    doLast {
-        javaexec {
-            main = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = [
-                    '--plugin', 'pretty',
-                    '--plugin', 'html:target/cucumber-report.html',
-                    '--glue', 'com.dewi.jones.cucumber',
-                    'src/test/resources']
-        }
     }
 }

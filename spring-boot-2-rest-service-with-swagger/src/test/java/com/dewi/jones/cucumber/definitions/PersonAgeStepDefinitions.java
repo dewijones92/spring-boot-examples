@@ -1,4 +1,4 @@
-package com.dewi.jones.cucumber;
+package com.dewi.jones.cucumber.definitions;
 
 import com.dewi.jones.dtos.response.PersonResponseDTO;
 import com.dewi.jones.services.interfaces.IPersonService;
@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 
 public class PersonAgeStepDefinitions {
