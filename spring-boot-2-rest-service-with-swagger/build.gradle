@@ -19,9 +19,9 @@ buildscript {
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'org.springframework.boot' version '3.0.0'
-    id "se.thinkcode.cucumber-runner" version "0.0.11"
-    id 'org.gradle.crypto.checksum' version '1.4.0'
+    id 'org.springframework.boot'
+    id "se.thinkcode.cucumber-runner"
+    id 'org.gradle.crypto.checksum'
 }
 
 
@@ -54,30 +54,30 @@ repositories {
 }
 
 dependencies {
-    api 'org.springframework.boot:spring-boot-starter-actuator:3.0.2'
-    api 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.2'
-    api 'org.springframework.boot:spring-boot-starter-web:3.0.2'
-    api 'org.springframework.boot:spring-boot-starter-hateoas:3.0.2'
-    api 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.0'
-   // api 'org.springdoc:springdoc-openapi-ui:1.7.0'
-    api 'org.springframework.boot:spring-boot-starter-validation:3.0.2'
-    runtimeOnly 'org.springframework.boot:spring-boot-devtools:3.0.2'
-    api 'mysql:mysql-connector-java:8.0.32'
-    testImplementation(platform("io.cucumber:cucumber-bom:7.11.2"))
-    testImplementation('org.junit.jupiter:junit-jupiter')
-    testImplementation('org.junit.jupiter:junit-jupiter-engine')
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.5'
-    api 'com.h2database:h2:2.1.214'
-    testImplementation 'io.cucumber:cucumber-java:7.11.2'
-    testImplementation 'io.cucumber:cucumber-spring:7.11.2'
+    api Spring.boot.actuator
+    api Spring.boot.data.jpa
+    api Spring.boot.web
+    api Spring.boot.hateoas
+    api libs.springdoc.openapi.starter.webmvc.ui
+   // api 'org.springdoc:springdoc-openapi-ui:_'
+    api Spring.boot.validation
+    runtimeOnly Spring.boot.devTools
+    api libs.mysql.connector.java
+    testImplementation(platform(libs.cucumber.bom))
+    testImplementation(Testing.junit.jupiter)
+    testImplementation(Testing.junit.jupiter.engine)
+    testImplementation Spring.boot.test
+    api libs.h2
+    testImplementation libs.cucumber.java
+    testImplementation libs.cucumber.spring
 
-    testImplementation 'io.cucumber:cucumber-junit:7.11.2'
+    testImplementation libs.cucumber.junit
 
-    testImplementation(platform("org.junit:junit-bom:5.9.2"))
-    testImplementation(platform("io.cucumber:cucumber-bom:7.11.2"))
+    testImplementation(platform(Testing.junit.bom))
+    testImplementation(platform(libs.cucumber.bom))
 
-    testImplementation("io.cucumber:cucumber-junit-platform-engine")
-    testImplementation("org.junit.platform:junit-platform-suite")
+    testImplementation(libs.cucumber.junit.platform.engine)
+    testImplementation(libs.junit.platform.suite)
 
 
 }
