@@ -2,9 +2,8 @@ package com.dewi.jones.services.interfaces;
 
 import com.dewi.jones.dtos.request.PersonRequestDTO;
 import com.dewi.jones.dtos.response.PersonResponseDTO;
-import com.dewi.jones.entities.Person;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IPersonService {
@@ -16,5 +15,5 @@ public interface IPersonService {
 
     void deleteById(Integer id);
 
-    Integer getAge(LocalDate currentDateTime, PersonResponseDTO person);
+    Long getAgeInYears(LocalDateTime currentDateTime, PersonResponseDTO person);
 }

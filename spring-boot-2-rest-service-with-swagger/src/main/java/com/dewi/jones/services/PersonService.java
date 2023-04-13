@@ -12,7 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -71,8 +72,8 @@ public class PersonService implements IPersonService {
     }
 
     @Override
-    public Integer getAge(LocalDate currentDateTime, PersonResponseDTO person) {
-        return null;
+    public Long getAgeInYears(LocalDateTime currentDateTime, PersonResponseDTO person) {
+        return ChronoUnit.YEARS.between(currentDateTime, person.getDob());
     }
 
     private PersonResponseDTO mapPesonEntitiyToPersonResponseDTO(Person personEntity) {
