@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 @ExtendWith(SpringExtension.class)
@@ -27,7 +28,7 @@ public class PersonIntegrationTests {
         System.out.println("DEWI BEFORE ADD");
 
         var personDto = new PersonRequestDTO();
-        personDto.setName("dewi owner NEW 22");
+        personDto.setName("dewi owner NEW 32");
         personDto.setDob(LocalDateTime.of(1992, 2, 11, 1,3,40));
         personDto.cats = new HashSet<>();
         var catRequestDTO = new CatRequestDTO();
@@ -40,9 +41,10 @@ public class PersonIntegrationTests {
         System.out.println("DEWI AFTER ADD");
 
         System.out.println("DEWI ADDED ID: %s".formatted(responseDTO.getId()));
+        assertEquals("Is name as expected?", "dewi owner NEW 32", responseDTO.getName());
 
         personController.get(responseDTO.getId());
-        Assertions.assertThat(personController.get(responseDTO.getId())).hasFieldOrPropertyWithValue("name", "dewi owner NEW");
+        Assertions.assertThat(personController.get(responseDTO.getId())).hasFieldOrPropertyWithValue("name", "dewi owner NEW 32");
 
         assertTrue("true", true);
       //  personController.delete(responseDTO.getId());

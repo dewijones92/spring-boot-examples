@@ -41,8 +41,9 @@ public class PersonService implements IPersonService {
 
     @Override
     public PersonResponseDTO save(PersonRequestDTO personRequestDTO) {
-        var personEntity = mapPersonRequestDTOtoPersonEntity(personRequestDTO);
-        Person personSavedEntity = personRepo.save(personEntity);
+        Person personSavedEntity = personRepo.save
+                (mapPersonRequestDTOtoPersonEntity(personRequestDTO));
+        System.out.format("saved - new person ID: %s", personSavedEntity.getId());
         return mapPesonEntitiyToPersonResponseDTO(personSavedEntity);
     }
 
@@ -59,6 +60,7 @@ public class PersonService implements IPersonService {
 
     @Override
     public void deleteById(Integer id) {
+        System.out.format("delete person ID: %s", id);
         var person = personRepo.findById(id);
         if(person.isPresent()){
             personRepo.deleteById(id);
